@@ -1,17 +1,16 @@
-<?php 
-$nombre=$_POST['nombre'];
-$apellido=$_POST['apellido'];
-$edad=$_POST['edad'];
-$id_esp=$_POST['id_esp'];
-$errores="";
+<?php
+$errors = '';
+$nombre = (isset($_POST['nombre'])) ? trim($_POST['nombre']) : '';
+$apellido = (isset($_POST['apellido'])) ? trim($_POST['apellido']) : '';
+$edad = (isset($_POST['edad'])) ? trim($_POST['edad']) : '';
+$id_esp = $_POST['id_esp'] ?? '';
+$foto = $_FILES['foto']['name'] ?? 'sinfoto.jpg';
 
-if(is_numeric($appellido) && is_numeric($nombre)){
-	$errores.="Nombrey appellido no puede ser numerico.";
-}if (!is_numeric($edad)) {
-	$errores.="La edad debe ser numerica.";
-}
-if ($edad < 1 || $edad > 65) {
-	$errores.="La edad debe ser entre 1 y 65 años";
-}
-
-//echo $errores;
+if (empty($nombre))
+    $errors .= '<div class="alert alert-warning" role="alert"><strong>Atención</strong> Debe ingresar un nombre.</div>';
+if (empty($apellido))
+    $errors .= '<div class="alert alert-warning" role="alert"><strong>Atención</strong> Debe ingresar un apellido.</div>';
+if (empty($edad) or ($edad > 70) or ($edad < 18))
+    $errors .= '<div class="alert alert-warning" role="alert"><strong>Atención</strong> Debe ingresar una edad válida.</div>';
+if (empty($id_esp))
+    $errors .= '<div class="alert alert-warning" role="alert"><strong>Atención</strong> Debe seleccionar una especialidad.</div>';

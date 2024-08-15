@@ -33,39 +33,15 @@
 
     <section >
         <div class="datos">
-            <h1> Listado de médicos</h1>
-
-            <table border="3">
-                <form>
-                    <tr>
-                        <td>Foto</td>
-                        <td><a href="medicos.php?order=id_medico">id_medico</a></td>
-                        <td><a href="medicos.php?order=nombre">Nombre</a></td><br>
-                        Buscar nombre <input type="text" name="buscar_nombre">
-                        <td><a href="medicos.php?order=apellido">Apellido </a></td>
-                        <td>Edad<br>
-                        </a>Desde
-                            <input type="text" name="desde_edad"><br>
-                            Hasta <input type="text" name="hasta_edad"><br><a href="medicos.php?order=edad"></td>
-                        <td><a href="medicos.php?order=id_esp">Especialidad </a></td>
-                        
-                        <td><a href="medico_alta.php">Nuevo médico</a></td>
-                    </tr>
-                    <?php while ($fila = mysqli_fetch_assoc($rs)): ?>
-                    <tr>
-                        <td> <img src="img/medicos/<?= $fila['foto']?>"></td>
-                        <td><?= $fila['id_medico']?></td>
-                            <td> <?= $fila['nombre']?></td>
-                        <td><?= $fila['apellido']?></td>
-                        <td><?= $fila['edad']?></td>
-                        <td> <?= $fila['id_esp']?></td>
+        <!--hacer 1 boton para ver el listado de medicos 
+        hacer 1 boton para agregar medico href="medico_alta.php"
+        hacer 1 boton para editar medico href="medico_editar.php"
+        hacer un boton para eliminar medico href="medico_eliminar.php"-->
+        <a href="medico_listado.php"><button>Ver listado de medicos</button></a>
+        <a href="medico_alta.php"><button>Agregar medico</button></a>
+        <a href="medico_editar.php"><button>Editar medico</button></a>
             
-                        <td align="center"><a href="medico_alta.php?medico_editar=<?=$fila['id_medico']?>"><br>Editar</a></td>
-                        <td align="center"><a href="medico_eliminar.php?medico_eliminar=<?=$fila['id_medico']?>"onclick="return confirm('Estas seguro de eliminar el medico ID <?=$fila['id_medico']?>(<?=$fila['nombre']?>)?')"><br>Borrar</a></td>
-                    </tr>
-                   
-                </form>
-            </table>
+            
         </div>
     </section>
 
